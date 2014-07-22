@@ -1,0 +1,2 @@
+require '../formatter'
+run App
