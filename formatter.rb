@@ -4,6 +4,7 @@ require "yelp"
 require "faraday"
 require "geocoder"
 require "json"
+require_relative "lib/yelp_table"
 
 class DataFormatter
 
@@ -13,12 +14,14 @@ class DataFormatter
                                :consumer_secret => 'd_G_9y--T3Zo3xZBmCHsBAxlHvU',
                                :token           => '87I0Rbf-mqU5469GuejO9BbNIIRKsm7z',
                                :token_secret    => 'mka5uunaiRgNo0x47oyF83qa4_Y')
-    # @geocoder = Geocoder.new
+    @yelp_table = YelpTable.new(
+      GschoolDatabaseConnection::DatabaseConnection.establish(ENV["RACK_ENV"])
+    )
   end
 
 
   def yelp_query
-    params = { term: 'bar',limit: 10,}
+    params = { term: 'bar'}
     response = @client.search('Denver', params)
     json_response = response.to_json
     data = JSON.parse(json_response)
@@ -32,7 +35,7 @@ data_formatter = DataFormatter.new
 yelp_data = data_formatter.yelp_query
 
 yelp_data.each do |business|
-  @locations_table.create(business["name"],
+  @yelp_table.create(business["name"],
                          business["phone"],
                          business["location"]["display_address"][0],    #Still need to make sql commands for yelp data
                          business["location"]["display_address"][1])
