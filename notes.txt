@@ -1,0 +1,53 @@
+Standard return of a business from Yelp API:
+"businesses": [
+  {
+    "is_claimed": true,
+    "rating": 4.5,
+    "mobile_url": "http://m.yelp.com/biz/the-arvada-tavern-arvada",
+    "rating_img_url": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/99493c12711e/ico/stars/v1/stars_4_half.png",
+    "review_count": 143,
+    "name": "The Arvada Tavern",
+    "snippet_image_url": "http://s3-media3.fl.yelpcdn.com/photo/Fw4hlwD-grHs-beaFiJdbA/ms.jpg",
+    "rating_img_url_small": "http://s3-media2.fl.yelpcdn.com/assets/2/www/img/a5221e66bc70/ico/stars/v1/stars_small_4_half.png",
+    "url": "http://www.yelp.com/biz/the-arvada-tavern-arvada",
+    "phone": "3036906269",
+    "snippet_text": "Well, this place is freaking awesome. Some serious cocktails are made behind the bar at this speak-easy inspired bar along the Olde Town strip in Arvada....",
+    "image_url": "http://s3-media3.fl.yelpcdn.com/bphoto/210f3Y6txGwDp5yxCHzDmQ/ms.jpg",
+    "categories": [
+      [
+        "Lounges",
+        "lounges"
+      ],
+      [
+        "American (Traditional)",
+        "tradamerican"
+      ],
+      [
+        "Cocktail Bars",
+        "cocktailbars"
+      ]
+    ],
+    "display_phone": "+1-303-690-6269",
+    "rating_img_url_large": "http://s3-media4.fl.yelpcdn.com/assets/2/www/img/9f83790ff7f6/ico/stars/v1/stars_large_4_half.png",
+    "id": "the-arvada-tavern-arvada",
+    "is_closed": false,
+    "location": {
+      "city": "Arvada",
+      "display_address": [
+        "5707 Olde Wadsworth Blvd",
+        "Arvada, CO 80002"
+      ],
+      "geo_accuracy": 9,
+      "postal_code": "80002",
+      "country_code": "US",
+      "address": [
+        "5707 Olde Wadsworth Blvd"
+      ],
+      "coordinate": {
+        "latitude": 39.8005027582,
+        "longitude": -105.08165875755
+      },
+      "state_code": "CO"
+    }
+  }
+]
