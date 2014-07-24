@@ -1,2 +1,2 @@
-require '../formatter'
-run App
+require './formatter'
+run DataFormatter

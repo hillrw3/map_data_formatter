@@ -3,10 +3,10 @@ class YelpTable
     @database_connection = database_connection
   end
 
-  def create(name, phone, street_address, city_state)
+  def create(name, phone, address)
     insert_location_sql = <<-SQL
-      INSERT INTO yelp_data (name, phone, street_address, city_state)
-      VALUES ('#{name}', '#{phone}', '#{street_address}', #{city_state})
+      INSERT INTO yelp_data (name, phone, address)
+      VALUES ('#{name}', '#{phone}', '#{address}')
       RETURNING id
     SQL
 
