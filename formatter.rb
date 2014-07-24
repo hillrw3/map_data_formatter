@@ -19,7 +19,7 @@ class DataFormatter
 
 
   def yelp_query
-    params = { term: 'bar'}
+    params = { category_filter: 'bars'}
     response = @client.search('Denver', params)
     json_response = response.to_json
     data = JSON.parse(json_response)
@@ -38,15 +38,25 @@ DataFormatter.new
 data_formatter = DataFormatter.new
 yelp_data = data_formatter.yelp_query
 
+
+def geocode_address (address)
+  results = Geocoder.search(address).to_json
+  JSON.parse(results)[0]["data"]["geometry"]["location"]
+end
+
+
 # yelp_data.each do |business|
-#
-#   @yelp_table.create(business["name"],
+#   address = business["location"]["display_address"][0] + " " + business["location"]["postal_code"]
+#   if @yelp_table.find_id_by_name(business["name"].gsub(/'/, '')) == nil
+#     @yelp_table.create(business["name"].gsub(/'/, ''),
 #                          business["phone"],
-#                          business["location"]["display_address"][0] + " " + business["location"]["postal_code"]   #Still need to make sql commands for yelp data
-#   )
+#                          address,
+#                          geocode_address(address)["lat"],
+#                          geocode_address(address)["lng"]
+#     )
+#     sleep(0.11)   #Google geocoding api has limit of 10/sec SUCK IT GOOGLE!
+#   end
 # end
 
-
-#Geocoding Yelp data
-results = Geocoder.search("oxford hotel 80238").to_json
-jj JSON.parse(results)[0]["data"]["geometry"]["location"]
+results = Geocoder.search("statue of liberty").to_json
+JSON.parse(results)[0]["data"]["geometry"]["location"]
