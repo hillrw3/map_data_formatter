@@ -45,18 +45,17 @@ def geocode_address (address)
 end
 
 
-# yelp_data.each do |business|
-#   address = business["location"]["display_address"][0] + " " + business["location"]["postal_code"]
-#   if @yelp_table.find_id_by_name(business["name"].gsub(/'/, '')) == nil
-#     @yelp_table.create(business["name"].gsub(/'/, ''),
-#                          business["phone"],
-#                          address,
-#                          geocode_address(address)["lat"],
-#                          geocode_address(address)["lng"]
-#     )
-#     sleep(0.11)   #Google geocoding api has limit of 10/sec SUCK IT GOOGLE!
-#   end
-# end
+yelp_data.each do |business|
+  address = business["location"]["display_address"][0] + " " + business["location"]["postal_code"]
+  if @yelp_table.find_id_by_name(business["name"].gsub(/'/, '')) == nil
+    @yelp_table.create(business["name"].gsub(/'/, ''),
+                         business["phone"],
+                         address,
+                         geocode_address(address)["lat"],
+                         geocode_address(address)["lng"]
+    )
+    sleep(0.11)   #Google geocoding api has limit of 10/sec SUCK IT GOOGLE!
+  end
+end
 
-results = Geocoder.search("statue of liberty").to_json
-JSON.parse(results)[0]["data"]["geometry"]["location"]
+
